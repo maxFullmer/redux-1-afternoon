@@ -1,28 +1,40 @@
 import React, { Component } from "react";
+import store, {UPDATE_RECIPE_NAME, UPDATE_RECIPE_CATEGORY} from './../../store.js';
 import { Link } from "react-router-dom";
 import "./Name.css";
 
 class Name extends Component {
   constructor(props) {
     super(props);
+    const reduxState = store.getState();
     this.state = {
-      name: '',
-      category: ''
+      recipeName: reduxState.recipeName,
+      recipeCategory: reduxState.recipeCategory,
     };
+
   }
+
   handleNameChange(nameVal) {
     this.setState({
-      name: nameVal
+      recipeName: nameVal
     });
   }
 
   handleCategoryChange(catVal) {
     this.setState({
-      category: catVal
+      recipeCategory: catVal
     });
   }
   saveChanges() {
     // Send data to Redux state
+    store.dispatch({
+      type: UPDATE_RECIPE_NAME,
+      payload: this.state.recipeName
+    })
+    store.dispatch({
+      type: UPDATE_RECIPE_CATEGORY,
+      payload: this.state.recipeCategory
+    })
   }
   render() {
     return (

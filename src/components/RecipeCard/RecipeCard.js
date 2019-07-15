@@ -3,10 +3,10 @@ import "./RecipeCard.css";
 
 let RecipeCard = props => {
   const {
-    name,
-    category,
-    authorFirst,
-    authorLast,
+    recipeName,
+    recipeCategory,
+    authorFirstName,
+    authorLastName,
     ingredients,
     instructions
   } = props;
@@ -19,11 +19,11 @@ let RecipeCard = props => {
   return (
     <div className="RecipeCard">
       <div className="title_container">
-        <h2>{name}</h2>
-        <p>#{category}</p>
+        <h2>{recipeName}</h2>
+        <p>#{recipeCategory}</p>
       </div>
       <p>
-        by {authorFirst} {authorLast}
+        by {authorFirstName} {authorLastName}
       </p>
       <h3>Ingredients</h3>
       <div className="scroll_container">
